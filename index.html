@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SWITCHH — Coz You Deserve The Best!!</title>
+  <meta name="description" content="Switchh — premium homemade natural alternatives. Reviews are moderated before publishing." />
+  <link rel="canonical" href="https://www.switchh.in/" />
+<meta name="robots" content="index,follow" />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Switchh">
+<meta property="og:title" content="Switchh — Premium Homemade, Naturally Better">
+<meta property="og:description" content="Handmade food & skincare — small-batch, natural ingredients. Place orders & read verified reviews.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.switchh.in.com/">
+<meta property="og:image:alt" content="Switchh natural products">
+  <style>
+    /* =========================
+       Theme variables (brown & off-white)
+       ========================= */
+    :root{
+      --accent:#7a4f36;        /* deep warm brown */
+      --accent-dark:#5e3a28;   /* darker brown */
+      --bg:#f8f6f1;            /* warm off-white */
+      --card:#fffaf5;          /* very light cream for cards */
+      --muted:#6b5a50;         /* muted brownish text */
+      --radius:14px;
+      --maxw:980px;
+      --header-h:80px;
+      --footer-h:72px;
+      --section-gap:26px;      /* spacing between main sections */
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      background: linear-gradient(180deg,var(--bg), #f2efe9);
+      color:#2f261f;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Header: logo + nav on left, optional right area for actions (kept empty) */
+    header{
+      height:var(--header-h);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 24px;
+      position:sticky;
+      top:0;
+      z-index:50;
+      background: linear-gradient(90deg, rgba(122,79,54,0.96), rgba(94,58,40,0.96));
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(15,10,8,0.12);
+    }
+
+    .header-left { display:flex; gap:16px; align-items:center; }
+    #logoImg{width:150px;height:60px;border-radius:10px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,0.12);border:2px solid rgba(255,255,255,0.06);background:#fff}
+    nav { display:flex; gap:14px; align-items:center; margin-left:8px; }
+    nav a{
+      color: rgba(255,255,255,0.95);
+      text-decoration:none;
+      font-weight:700;
+      padding:8px 10px;
+      border-radius:8px;
+      transition: background .18s;
+    }
+    nav a:hover{ background: rgba(255,255,255,0.06); }
+
+    main{
+      max-width:var(--maxw);
+      margin:20px auto;
+      padding:20px;
+      min-height: calc(100vh - var(--header-h) - var(--footer-h)); /* fill viewport */
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 10px 30px rgba(34,28,24,0.06);
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3{margin:0 0 8px;color:var(--accent-dark)}
+    p.lead{color:var(--muted);margin:0 0 12px}
+    .hint{font-size:13px;color:var(--muted);}
+
+    .btn{border:0;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent), var(--accent-dark));color:white;box-shadow:0 6px 18px rgba(122,79,54,0.12)}
+    .btn-outline{background:transparent;border:1px solid rgba(122,79,54,0.12);color:var(--accent);font-weight:700}
+
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea,select{padding:10px 12px;border-radius:8px;border:1px solid #e3d9d0;font-size:14px;background:transparent;color:var(--muted)}
+    textarea{min-height:90px;resize:vertical}
+    .reviews-grid{display:grid;grid-template-columns:1fr 360px;gap:16px}
+    .review{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fff8f2);box-shadow:0 6px 18px rgba(18,26,20,0.03)}
+    .review strong{color:var(--accent-dark)}
+    .small{font-size:13px;color:var(--muted)}
+
+    footer{
+      height:var(--footer-h);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-size:13px;
+      margin-top:0;
+      background:transparent;
+    }
+
+    @media (max-width:980px){
+      .reviews-grid{grid-template-columns:1fr}
+      nav a{display:block}
+    }
+
+    /* Home rotator styles (two at a time) */
+    .home-reviews-wrap { display:flex; gap:12px; align-items:flex-start; justify-content:flex-start; margin-bottom:16px; }
+    .home-review { flex:1; min-width:220px; max-width:48%; background:linear-gradient(180deg,#fff,#fff8f2); border-radius:10px; padding:14px; box-shadow:0 6px 18px rgba(18,26,20,0.03); opacity:0; transform: translateY(8px); transition: opacity 800ms ease, transform 800ms ease; }
+    .home-review.visible { opacity:1; transform: translateY(0); }
+    .home-review h4 { margin:0 0 6px; font-size:15px; color:var(--accent-dark) }
+    .home-review p { margin:0; color:var(--muted); font-size:14px; }
+    .home-review .stars { color:var(--accent-dark); font-weight:700; margin-bottom:6px; }
+    @media (max-width:600px){ .home-reviews-wrap{flex-direction:column} .home-review{max-width:100%} }
+
+    /* spacing helpers */
+    .section-gap { margin-top: var(--section-gap); margin-bottom: var(--section-gap); }
+    .small-gap { margin-top: 12px; }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <!-- logo + nav on left -->
+      <img id="logoImg" src="logo.png" alt="Switchh logo" />
+      <nav aria-label="Main navigation">
+        <a href="#/" data-link>Home</a>
+        <a href="#/reviews" data-link>Reviews</a>
+        <a href="#/order" data-link>Place Order</a>
+      </nav>
+    </div>
+    <div style="width:140px; text-align:right; color:rgba(255,255,255,0.9); font-weight:700;">
+    </div>
+  </header>
+
+  <main id="app">
+    <h1 style="font-size:28px;margin-top:0;color:var(--accent-dark)">Switchh — Premium Homemade, Naturally Better</h1>
+  </main>
+
+  <footer>
+    © <span id="year"></span>
+  </footer>
+
+  <!-- Templates -->
+  <template id="tpl-home">
+      <div class="section-gap"></div>
+    <section class="card" aria-labelledby="homeTitle">
+      <h2 id="homeTitle">From the Founder</h2>
+      <p class="lead">Thank you for trusting Switchh. We make our products at home in small batches, using carefully sourced natural ingredients — nothing artificial, no mass production. Every item is crafted with care so you get premium, healthier alternatives that truly feel better.</p>
+
+      <!-- add gap before Reviews -->
+      <div class="section-gap"></div>
+
+      <!-- REVIEW ROTATOR (two at a time) -->
+      <div id="homeReviews" class="home-reviews-wrap" aria-live="polite">
+        <div class="home-review" id="homeReviewA">
+          <h4>—</h4>
+          <div class="stars"></div>
+          <p></p>
+        </div>
+        <div class="home-review" id="homeReviewB">
+          <h4>—</h4>
+          <div class="stars"></div>
+          <p></p>
+        </div>
+      </div>
+
+      <!-- gap between reviews and About -->
+      <div class="section-gap"></div>
+
+      <div class="card">
+        <h3>About Switchh</h3>
+        <p class="hint">Premium homemade alternatives across food & skincare — snacks, protein bars, granola, peanut butter, seasonal face creams. Honest ingredients. Small-batch care.</p>
+        <div style="margin-top:12px">
+          <button class="btn btn-outline" onclick="navigateTo('/reviews')">Read Reviews</button>
+          <button class="btn btn-primary" onclick="navigateTo('/order')">Place Order</button>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-reviews">
+    <section class="card" aria-labelledby="reviewsHeading">
+      <h2 id="reviewsHeading">Customer Reviews</h2>
+
+      <div class="reviews-grid" style="margin-top:12px">
+        <div>
+          <div id="reviewsList" aria-live="polite"></div>
+        </div>
+
+        <aside class="card">
+          <h3 style="margin-top:0">Post a Review</h3>
+          <p class="hint">We publish reviews only after admin approval. One review per browser. Provide either email or mobile so we can check duplicates.</p>
+          <form id="reviewForm">
+            <input id="rname" type="text" placeholder="Your name (optional)">
+            <input id="r_email" type="email" placeholder="Email (optional but recommended)">
+            <input id="r_mobile" type="tel" placeholder="Mobile (optional but recommended)">
+            <select id="rrating" required>
+              <option value="">Rating *</option>
+              <option value="5">★★★★★ Excellent</option>
+              <option value="4">★★★★ Great</option>
+              <option value="3">★★★ Good</option>
+              <option value="2">★★ Okay</option>
+              <option value="1">★ Poor</option>
+            </select>
+            <textarea id="rtext" placeholder="Write your review..." required></textarea>
+            <div style="display:flex;gap:8px;justify-content:flex-end">
+              <button type="reset" class="btn btn-outline">Reset</button>
+              <button type="submit" class="btn btn-primary">Submit Review</button>
+            </div>
+          </form>
+          <p class="hint" style="margin-top:10px">Your review will soon be shown on the web page.</p>
+        </aside>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-order">
+    <section class="card" aria-labelledby="orderHeading">
+      <h2 id="orderHeading">Place Order</h2>
+
+      <form id="orderForm">
+        <input type="text" id="cname" name="name" placeholder="Full name *" required>
+
+        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+          <input type="tel" id="contact" name="mobile" placeholder="Mobile number *" required style="flex:1;min-width:200px">
+          <input type="email" id="emailOrder" name="email" placeholder="Email (optional)" style="flex:1;min-width:200px">
+        </div>
+
+        <textarea id="addr" name="address" placeholder="Address *" required></textarea>
+
+        <!-- product select -->
+        <label class="small">Product *</label>
+        <select id="productSelect" name="product" required>
+          <option value="">Select product</option>
+          <option value="Peanut Butter">Peanut Butter</option>
+          <option value="Signature Granola">Signature Granola</option>
+        </select>
+
+        <!-- quantity options in weights -->
+        <label class="small">Unit *</label>
+        <select id="unit" name="unit" required>
+          <option value="">Choose</option>
+          <option value="250g">250 g</option>
+          <option value="500g">500 g</option>
+          <option value="1kg">1 kg</option>
+          <option value="2kg">2 kg</option>
+          <option value="5kg">5 kg</option>
+        </select>
+
+        <label class="small">Quantity *</label>
+        <input type="number" id="qty" name="quantity" required style="flex:1;min-width:200px">
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+          <button type="reset" class="btn btn-outline">Reset</button>
+          <button type="submit" class="btn btn-primary">Confirm Order</button>
+        </div>
+      </form>
+    </section>
+  </template>
+
+  <script>
+    /* ====== CONFIG: your deployed Apps Script Web App URL (exec URL) ====== */
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz0rWBbsOs6X3lSrm6lCNwCyhWfPILD6aNgn1UstuvwDt87RWiQm9FTS-NnJehyyY8J/exec';
+    /* ================================================================== */
+
+    // Router + render
+    const app = document.getElementById('app');
+    const routes = {
+      '/': document.getElementById('tpl-home').content,
+      '/reviews': document.getElementById('tpl-reviews').content,
+      '/order': document.getElementById('tpl-order').content
+    };
+
+    function renderRoute(){
+      const path = location.hash.replace('#','') || '/';
+      const tpl = routes[path] || routes['/'];
+      app.innerHTML = '';
+      app.appendChild(tpl.cloneNode(true));
+      runPage(path);
+    }
+    window.addEventListener('hashchange', renderRoute);
+    window.addEventListener('load', () => { renderRoute(); document.getElementById('year').textContent = `${new Date().getFullYear()} Switchh • Handmade, naturally crafted`; });
+
+    function navigateTo(p){ location.hash = p; }
+    window.navigateTo = navigateTo;
+
+    // Storage keys & sample
+    const REVIEWS_FLAG = 'switchh_review_submitted_flag_v1';
+    const LOCAL_REVIEWS_KEY = 'switchh_local_reviews_v1';
+    const ORDERS_LOCAL_KEY = 'switchh_orders_demo_v1';
+
+    function escapeHtml(s=''){ return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;'); }
+
+    function runPage(path){
+      if(path === '/reviews') initReviews();
+      if(path === '/order') initOrder();
+      if(path === '/') initHomeReviewsRotator();
+    }
+
+    // ---------- Fetch approved reviews ----------
+    async function fetchApprovedReviews(){
+      try {
+        const url = WEB_APP_URL + (WEB_APP_URL.indexOf('?') === -1 ? '?action=approvedReviews' : '&action=approvedReviews');
+        const res = await fetch(url);
+        if(!res.ok) throw new Error('Fetch failed with status ' + res.status);
+        const json = await res.json();
+        return Array.isArray(json) ? json : [];
+      } catch (err) {
+        console.error('fetchApprovedReviews error', err);
+        // fallback sample if server not available
+        return [
+          {name:'Anita', rating:5, text:'Love the peanut butter — creamy and totally natural.'},
+          {name:'Rahul', rating:5, text:'The granola tastes like homemade goodness. Perfect breakfast.'},
+          {name:'Meera', rating:4, text:'Face cream is light and non-greasy.'}
+        ];
+      }
+    }
+
+    // ---------- Render reviews list (reviews page) ----------
+    async function renderReviewsList(){
+      const container = document.getElementById('reviewsList');
+      if(!container) return;
+      container.innerHTML = '<div class="hint">Loading reviews…</div>';
+      const reviews = await fetchApprovedReviews();
+      container.innerHTML = '';
+      if(!reviews || reviews.length === 0){
+        container.innerHTML = '<div class="review">No reviews yet — be the first to post (pending approval).</div>';
+        return;
+      }
+      reviews.forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'review';
+        const name = escapeHtml(r.name || r.Name || 'Anonymous');
+        const rating = Number(r.rating || r.Rating || 0);
+        const text = escapeHtml(r.text || r.Text || '');
+        div.innerHTML = `<strong>${name} ${'★'.repeat(rating)}</strong><div style="margin-top:6px">${text}</div>`;
+        container.appendChild(div);
+      });
+    }
+
+    // ---------- Home two-review rotator ----------
+    let rotator = {
+      reviews: [],
+      index: 0,
+      timer: null,
+      intervalMs: 5000, // show pair for 5 seconds
+      fadeDuration: 800
+    };
+
+    async function initHomeReviewsRotator(){
+      const a = document.getElementById('homeReviewA');
+      const b = document.getElementById('homeReviewB');
+      if(!a || !b) return;
+
+      // reset
+      a.classList.remove('visible');
+      b.classList.remove('visible');
+      a.querySelector('h4').textContent = '';
+      a.querySelector('.stars').textContent = '';
+      a.querySelector('p').textContent = '';
+      b.querySelector('h4').textContent = '';
+      b.querySelector('.stars').textContent = '';
+      b.querySelector('p').textContent = '';
+
+      rotator.reviews = await fetchApprovedReviews();
+      rotator.index = 0;
+
+      // If no reviews, show placeholder
+      if(!rotator.reviews || rotator.reviews.length === 0){
+        a.querySelector('h4').textContent = 'No reviews yet';
+        a.querySelector('p').textContent = 'Be the first to share your experience!';
+        a.classList.add('visible');
+        b.style.display = 'none';
+        return;
+      }
+
+      // ensure at least two items by cycling/repeating if needed
+      if(rotator.reviews.length === 1){
+        rotator.reviews.push(rotator.reviews[0]);
+      }
+
+      b.style.display = ''; // ensure visible
+
+      // show initial pair immediately
+      showPair(rotator.index);
+
+      // clear old timer
+      if(rotator.timer) clearInterval(rotator.timer);
+      rotator.timer = setInterval(() => {
+        // fade out current pair
+        a.classList.remove('visible');
+        b.classList.remove('visible');
+        // after fadeDuration, advance index and show next pair
+        setTimeout(() => {
+          rotator.index = (rotator.index + 2) % rotator.reviews.length;
+          showPair(rotator.index);
+        }, rotator.fadeDuration + 50);
+      }, rotator.intervalMs);
+    }
+
+    function showPair(startIndex){
+      const a = document.getElementById('homeReviewA');
+      const b = document.getElementById('homeReviewB');
+      if(!a || !b) return;
+      const reviews = rotator.reviews;
+      // pick items at startIndex and startIndex+1 (wrap)
+      const first = reviews[startIndex % reviews.length];
+      const second = reviews[(startIndex + 1) % reviews.length];
+
+      // populate A
+      a.querySelector('h4').textContent = (first.name || first.Name || 'Anonymous');
+      a.querySelector('.stars').textContent = '★'.repeat(Number(first.rating || first.Rating || 0));
+      a.querySelector('p').textContent = (first.text || first.Text || '');
+
+      // populate B
+      if (second) {
+        b.querySelector('h4').textContent = (second.name || second.Name || 'Anonymous');
+        b.querySelector('.stars').textContent = '★'.repeat(Number(second.rating || second.Rating || 0));
+        b.querySelector('p').textContent = (second.text || second.Text || '');
+      }
+      // small delay then fade in
+      requestAnimationFrame(() => {
+        // ensure they start slightly hidden (in case)
+        a.classList.remove('visible');
+        b.classList.remove('visible');
+        // next tick: add visible to animate in
+        setTimeout(() => {
+          a.classList.add('visible');
+          b.classList.add('visible');
+        }, 30);
+      });
+    }
+
+    // ---------- Review submit (form-encoded) ----------
+    function formEncodePayload(obj){
+      const params = new URLSearchParams();
+      for (const k in obj) {
+        if (obj[k] !== undefined && obj[k] !== null) params.append(k, String(obj[k]));
+      }
+      return params.toString();
+    }
+
+    function initReviews(){
+      renderReviewsList();
+
+      const form = document.getElementById('reviewForm');
+      if(!form) return;
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+
+        if(localStorage.getItem(REVIEWS_FLAG)){
+          alert('You have already submitted a review from this browser. Thank you!');
+          return;
+        }
+
+        const name = document.getElementById('rname').value.trim() || 'Anonymous';
+        const email = document.getElementById('r_email').value.trim();
+        const mobile = document.getElementById('r_mobile').value.trim();
+        const rating = document.getElementById('rrating').value;
+        const text = document.getElementById('rtext').value.trim();
+
+        if(!rating || !text || (!email && !mobile)){
+          alert('Please provide: rating, review text, and either email or mobile.');
+          return;
+        }
+
+        const payload = { name, email, mobile, rating: Number(rating), text, mode: 'review' };
+
+        try {
+          const body = formEncodePayload(payload);
+          const res = await fetch(WEB_APP_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+            body: body
+          });
+          const json = await res.json().catch(()=> null);
+
+          if (json && (json.status === 'ok' || json.status === 'success')) {
+            localStorage.setItem(REVIEWS_FLAG, '1');
+            alert('Thanks — your review is submitted and pending approval.');
+            form.reset();
+            renderReviewsList();
+            initHomeReviewsRotator();
+          } else if (json && json.status === 'duplicate') {
+            alert('A review with this email or mobile already exists.');
+          } else if (json && json.status === 'error') {
+            alert('Submission failed: ' + (json.message || 'Server rejected the request.'));
+          } else {
+            alert('Unexpected response from server. The review may not have been submitted.');
+          }
+        } catch (err) {
+          console.error('submit review error', err);
+          alert('Network error while submitting review. Please try again later.');
+        }
+      });
+    }
+
+    // ---------- Orders ----------
+    function initOrder(){
+      const form = document.getElementById('orderForm');
+      if(!form) return;
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        const name = document.getElementById('cname').value.trim();
+        const mobile = document.getElementById('contact').value.trim();
+        const email = document.getElementById('emailOrder').value.trim();
+        const address = document.getElementById('addr').value.trim();
+        const product = document.getElementById('productSelect').value;
+        const unit = document.getElementById('unit').value;
+        const quantity = document.getElementById('qty').value;
+
+        if(!name || !mobile || !address || !product || !quantity || !unit){
+          alert('Please complete all required fields.');
+          return;
+        }
+        if(mobile.length < 6){ alert('Please enter a valid mobile number.'); return; }
+
+        const payload = { name, mobile, email, address, product, quantity, unit, mode: 'order' };
+
+        try {
+          const body = formEncodePayload(payload);
+          const res = await fetch(WEB_APP_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+            body: body
+          });
+
+          // try parse server JSON (Apps Script usually returns JSON)
+          const json = await res.json().catch(()=> null);
+
+          if (res.ok && (json === null || json.status === 'ok' || json.status === 'success')) {
+            alert('Thank you! Your order has been received. We will contact you shortly.');
+            form.reset();
+          } else if (json && json.status === 'error') {
+            alert('Server error: ' + (json.message || 'Unknown error') + '\nYour order has been saved locally to prevent data loss.');
+            const demo = JSON.parse(localStorage.getItem(ORDERS_LOCAL_KEY) || '[]');
+            demo.push(Object.assign({createdAt: new Date().toISOString()}, payload));
+            localStorage.setItem(ORDERS_LOCAL_KEY, JSON.stringify(demo));
+            form.reset();
+          } else {
+            console.error('order error', res.status, json);
+            const demo = JSON.parse(localStorage.getItem(ORDERS_LOCAL_KEY) || '[]');
+            demo.push(Object.assign({createdAt: new Date().toISOString()}, payload));
+            localStorage.setItem(ORDERS_LOCAL_KEY, JSON.stringify(demo));
+            alert('Server returned an unexpected response. Order saved locally for demo.');
+            form.reset();
+          }
+        } catch (err) {
+          console.error('order submit error', err);
+          const demo = JSON.parse(localStorage.getItem(ORDERS_LOCAL_KEY) || '[]');
+          demo.push(Object.assign({createdAt: new Date().toISOString()}, payload));
+          localStorage.setItem(ORDERS_LOCAL_KEY, JSON.stringify(demo));
+          alert('Network error while sending order. Order saved locally for demo.');
+          form.reset();
+        }
+      });
+    }
+    renderRoute();
+
+  </script>
+</body>
+</html>
